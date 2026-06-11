@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200];
+    char result[200];
+    int i,j;
+    
+    printf("Enter a sentence: ");
+    scanf(" %[^\n]", str);
+    
+    // Copy characters one by one, skipping extra spaces
+    j=0; // index for result array
+    for(i=0;i<strlen(str);i++) {
+        
+        // Check if current and previous characters are both spaces
+        
+        if(str[i]==' ' && str[i-1] == ' ') {
+            continue; //Skip this extra space
+        }
+        
+        // Otherwise copy the character into result
+        result[j] = str[i];
+        j++;
+    }
+    
+    // Add null terminator to close the result string
+    result[j] = '\0';
+    
+    // Display the cleaned string
+    printf("Cleaned string: %s\n", result);
+    
+    return 0;
+}

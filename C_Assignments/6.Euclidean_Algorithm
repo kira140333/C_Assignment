@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+/* Recursive function to compute GCD using Euclidean algorithm */
+int gcd(int a,int b) {
+    if (b==0)
+    return a;     // when remainder is 0, a is the GCD
+    
+    return gcd(b,a%b); // Recursive case: replace a with b, b with a%b
+    
+}
+
+int main() {
+    int num1, num2, result;
+    
+    printf("GCD Calculator (Euclidean Algorithm) \n\n");
+    
+    printf("Enter the first positive integer : ");
+    scanf("%d", &num1);
+    
+    printf("Enter the second positive integer: ");
+    scanf("%d", &num2);
+    
+    /* Validate that both numbers are positive */
+    if(num1<=0 || num2 <=0) {
+        printf("\nError: Both numbers must be positive integers.\n");
+        return 1;
+    }
+    
+    /* Call the recursive GCD function */
+    result = gcd(num1, num2);
+    
+    /* Display the result */
+    printf("\nGCD(%d, %d) = %d\n", num1,num2,result);
+    
+    return 0;
+}

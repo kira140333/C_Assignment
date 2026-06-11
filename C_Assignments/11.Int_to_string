@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int num;
+    char result[20];
+    int i=0;
+    
+    printf("Enter a whole number: ");
+    scanf("%d", &num);
+    
+    // Handle negative numbers
+    int isNegative = 0;
+    if(num<0) {
+        isNegative=1;
+        num=-num;  // Work with the positive version
+    }
+    
+    //Handle zero as special case
+    if(num==0) {
+        result[i++]='0';
+    }
+    
+    // Extract digits one by one(stored in reverse)
+    while(num>0) {
+        /*
+        num % 10 gives the last digit (1234 % 10 = 4)
+        adding '0' converts it to its char equivalent(4 + '0' = '4')
+        */
+        result[i++] = (num % 10) + '0';
+        num=num/10; //Remove the last digit
+    }
+    
+    // Add the negative sign at the end (will be reversed later)
+    if(isNegative) {
+        result[i++] = '-';
+    }
+    
+    // Add null terminator to mark end of string
+    result[i] = '\0';
+    
+    // Reverse the string (digits were stored backwards)
+    int left=0;
+    int right = i-1;
+    while(left<right) {
+        char temp = result[left];
+        result[left] = result[right];
+        result[right] = temp;
+        left++;
+        right--;
+    }
+    
+    printf("String value: %s\n", result);
+    
+    return 0;
+}

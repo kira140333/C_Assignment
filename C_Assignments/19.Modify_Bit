@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int num1, num2, pos, n, mask, bits, result;
+
+    printf("Enter first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter second number: ");
+    scanf("%d", &num2);
+
+    printf("Enter starting bit position: ");
+    scanf("%d", &pos);
+
+    printf("Enter number of bits: ");
+    scanf("%d", &n);
+
+    mask = ((1 << n) - 1) << pos;
+    bits = (num2 & ((1 << n) - 1)) << pos;
+    result = (num1 & ~mask) | bits;
+
+    printf("Result: %d\n", result);
+
+    return 0;
+}

@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <string.h>
+ 
+ int main() {
+     char str[100];
+     int left, right;
+     int isPalindrome = 1; // Assume true until proven otherwise.
+ 
+ printf("Enter a string: ");
+ scanf("%s", str);
+ 
+ // Set left pointer at start, right pointer at end.
+ left = 0;
+ right = strlen(str) - 1;
+ 
+ // compare characters from both ends moving inward
+ while(left < right) {
+     if(str[left] != str[right]) {
+         isPalindrome = 0; // Mismatch found - not a palindrome.
+         break;
+     }
+     left++;
+     right--;
+ }
+ 
+ if(isPalindrome) {
+     printf("\"%s\" is a palindrome.\n", str);
+ } else {
+     printf("\"%s\" is NOT a palindrome.\n", str);
+ }
+ 
+ return 0;
+ }
+ 

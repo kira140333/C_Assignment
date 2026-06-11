@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[200];
+    int letters[26] = {0}; // one slot per letter a-z, all start at 0
+    int i;
+    
+    printf("Enter a sentence: ");
+    scanf(" %[^\n]", str); // Reads full line incld. spaces
+    
+    // Loop through each character until the null terminator '\0'
+    for(i = 0; str[i] != '\0'; i++) {
+        
+        char c = str[i];
+        
+        // Convert uppercase to lowercase using ASCII
+        if (c >= 'A' && c <= 'Z') {
+            c = c + 32;  // 'A'(65) + 32 = 'a'(97)
+        }
+        
+        // Check if the character is a valid lowercase letter
+        if (c >= 'a' && c <= 'z') {
+            int index = c - 'a'; // Maps 'a' to 0, 'b' to 1, ..., 'z' to 25
+            letters[index] = 1;  // Mark this letter as FOUND!
+        }
+    }
+    
+    // Check if all 26 letters are marked
+    int isPangram = 1;
+    for(i = 0; i < 26; i++) {
+        if(letters[i] == 0) {
+            isPangram = 0; // at least one letter is missing
+            break;
+        }
+    }
+    
+    if(isPangram) {
+        printf("The string is a pangram.\n");
+    } else {
+        printf("The string is NOT a pangram.\n");
+    }
+    
+    return 0;
+}
