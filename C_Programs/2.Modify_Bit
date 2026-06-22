@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+unsigned char modifyRegister(unsigned char reg)  {
+    reg = reg | (1 << 2);   // Set bit 2
+    reg = reg &~ (1 << 5);  // Clear bit 5
+    reg = reg ^ (1 << 0);   // Toggle bit 0
+    return reg;
+}
+
+int main()  {
+    unsigned char reg;
+    
+    printf("Enter register value (0-255): ");
+    scanf("%d", &reg);
+    
+    unsigned char result = modifyRegister(reg);
+    printf("Modified register: %d\n", result);
+    
+    return 0;
+}
